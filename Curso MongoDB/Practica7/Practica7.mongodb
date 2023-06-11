@@ -1,0 +1,108 @@
+use("practica7")
+
+//db.productos.drop() si hay archivos en la coleccion los elimina
+
+db.productos.insertMany([
+    {
+        codigo: 1,
+        nombre: "producto1",
+        precio: 200,
+        peso: 20,
+        dimensiones: {
+            ancho: 10,
+            alto: 5
+        },
+        marca: "B&B",
+        calificacion: 4,
+        Comentarios: [{
+            usuario: "mario@mail.com",
+            comentario: "Implementar mejoras en el empaque."
+        }]
+    },
+
+    {
+        codigo: 2,
+        nombre: "producto2",
+        precio: 300,
+        peso: 5,
+        dimensiones: {
+            ancho: 2,
+            alto: 3
+        },
+        marca : "Patito",
+        calificacion: 2,
+        Comentarios:[{
+            usuario: "ale@mail.com",
+            comentario: "Mejorar sabor y consistencia."
+        }]
+    },
+    {
+        codigo: 3,
+        nombre: "producto3",
+        precio: 150,
+        peso: 100,
+        dimensiones:{
+            alto: 10,
+            ancho: 20
+        },
+        marca: "3B",
+        calificacion: 5,
+        Comentarios: [{
+            usuario: "Mily@mail.es",
+            comentario: "producto 10/10"
+        }]
+    },
+    {
+        codigo: 4,
+        nombre: "producto4",
+        precio: 50.75,
+        peso: 80,
+        dimensiones:{
+            ancho: 10,
+            alto: 10
+        },
+        marca: "CBC",
+        calificacion: 3,
+        Comentarios: [{
+            usuario: "majo@mail.es",
+            comentario: "Bueno pero hay mejores."
+        }]
+    },
+    {
+        codigo: 5,
+        nombre: "producto5",
+        precio: 30.25,
+        peso: 40,
+        dimensiones:{
+            ancho: 3,
+            alto: 4
+        },
+        marca: "MK",
+        calificacion: 4,
+        Comentarios: [{
+            usuario: "juana@mail.com",
+            comentario: 'Un producto bastante bueno.'
+        }]
+    }
+])
+
+//Buscar articulos con peso mayor a 40
+db.productos.find({peso:{$gte:40}})
+
+//Actualizar la calificacion del producto con codigo 2
+db.productos.updateOne(
+    {codigo:2},
+    {
+        $set: {
+            calificacion: 3
+        }
+    } 
+)
+
+db.productos.find({nombre: "producto3"})//buscar producto con nombre 'producto3'
+
+//Eliminar el producto con codigo 4
+db.productos.deleteOne(
+    {codigo: 4}
+)
+db.productos.find()//Mostrar todos los productos

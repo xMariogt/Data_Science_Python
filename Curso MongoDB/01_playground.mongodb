@@ -1,0 +1,4 @@
+use("sample_supplies");
+
+db.sales.find({storeLocation: "Denver"}).count();
+db.sales.find({storeLocation: "Denver"});

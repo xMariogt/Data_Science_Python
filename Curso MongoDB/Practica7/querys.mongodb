@@ -1,0 +1,15 @@
+use("practica7")
+
+db.productos.find()
+db.productos.updateOne(
+    //query
+    {codigo:3},
+    //change => operators
+    {
+        $set: {
+            nombre: "producto3"
+        }
+    } 
+)
+
+db.productos.find({peso:{$gte:40}})
